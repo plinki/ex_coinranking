@@ -1,6 +1,10 @@
 # ExCoinranking
 
-**TODO: Add description**
+An Elixir wrapper for the Coinranking API, using HTTPoison and Poison.
+
+example: ```coin(1, %{base: "USD", timePeriod: "30d"})```
+
+Coinranking API Documentation: https://docs.coinranking.com/public
 
 ## Installation
 
