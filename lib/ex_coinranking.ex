@@ -13,6 +13,7 @@ defmodule Excoinranking do
 
   HTTPoison.start()
 
+  @spec get(String.t(), map) :: {map}
   def get(data, query_params \\ %{base: "USD"}) do
     case HTTPoison.get(@base_url <> data, [], params: query_params) do
       {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
@@ -24,12 +25,15 @@ defmodule Excoinranking do
       {_, msg} ->
         msg.body |> Poison.decode!()
     end
-    |> (fn {ok, body} ->
+    |> (fn {_ok, body} ->
           body
           |> Poison.decode(keys: :atoms)
           |> case do
-            {:ok, parsed} -> {ok, parsed}
-            _ -> {:error, body}
+            {:ok, parsed} ->
+              parsed
+
+            _ ->
+              {:error, body}
           end
         end).()
   end
