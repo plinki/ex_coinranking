@@ -13,7 +13,7 @@ defmodule Excoinranking do
 
   HTTPoison.start()
 
-  @spec get(String.t(), map) :: {map}
+  @spec get(String.t(), map) :: map
   def get(data, query_params \\ %{base: "USD"}) do
     case HTTPoison.get(@base_url <> data, [], params: query_params) do
       {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
