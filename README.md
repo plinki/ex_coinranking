@@ -1,25 +1,13 @@
-# ExCoinranking
+# ex_coinranking
 
 An Elixir wrapper for the Coinranking API, using HTTPoison and Poison.
 
-example: ```coin(1, %{base: "USD", timePeriod: "30d"})```
+example:
+```
+iex(1)> bitcoin = Coinranking.coin(1, %{base: "EUR", timePeriod: "30d"})
 
-Coinranking API Documentation: https://docs.coinranking.com/public
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_coinranking` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:ex_coinranking, "~> 0.1.0"}
-  ]
-end
+iex(2)> bitcoin.data.coin.description
+"Bitcoin is the first decentralized digital currency that can be sent through the internet globally without using financial institutions like banks. The network is controlled by many of its users, instead of a few entities."
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_coinranking](https://hexdocs.pm/ex_coinranking).
-
+Coinranking API Documentation: https://docs.coinranking.com/public
