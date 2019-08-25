@@ -9,18 +9,18 @@ defmodule Coinranking do
   use HTTPoison.Base
   alias Poison
 
-  @base_url "https://api.coinranking.com/v1/public/"
-
   HTTPoison.start()
 
   @spec get(String.t(), map) :: {atom, map}
   def get(data, query_params \\ %{}) do
-    HTTPoison.get(@base_url <> data, [{"Content-Type", "application/json"}], params: query_params)
+    HTTPoison.get(base_url(:ex_coinranking) <> data, [{"Content-Type", "application/json"}],
+      params: query_params
+    )
   end
 
   @spec get!(String.t(), map) :: map
   def get!(data, query_params \\ %{}) do
-    case HTTPoison.get(@base_url <> data, [{"Content-Type", "application/json"}],
+    case HTTPoison.get(base_url(:ex_coinranking) <> data, [{"Content-Type", "application/json"}],
            params: query_params
          ) do
       {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
@@ -67,5 +67,13 @@ defmodule Coinranking do
 
   def exchanges(query_params \\ %{}) do
     get!("exchanges", query_params)
+  end
+
+  @spec base_url(atom) :: String.t()
+  defp base_url(config) do
+    base = Application.get_env(config, :base)
+    ver = Application.get_env(config, :ver)
+
+    "#{base}v#{ver}/public/"
   end
 end
