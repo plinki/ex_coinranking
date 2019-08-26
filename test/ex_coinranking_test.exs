@@ -32,4 +32,16 @@ defmodule CoinrankingTest do
     assert map.status == "success"
     assert %{status: _, data: _} = map
   end
+
+  test "markets" do
+    map = Coinranking.markets()
+    assert map.status == "success"
+    assert %{status: _, data: _} = map
+  end
+
+  test "cryptocurrency exchanges" do
+    map = Coinranking.exchanges()
+    assert map.status == "success"
+    assert %{status: _, data: _} = map
+  end
 end
