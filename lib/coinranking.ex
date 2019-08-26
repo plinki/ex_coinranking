@@ -111,6 +111,7 @@ defmodule Coinranking do
   @doc """
   Get global stats
   ```
+  %{param: "value"}
   param {string} params.base [default: USD] - Base currency
   ```
   """
@@ -121,6 +122,7 @@ defmodule Coinranking do
   @doc """
   List all markets for currencies - paginated by 50
   ```
+  %{param: "value"}
   param {string|number} params.refCurrencyId [default: 1509] - Id of currency in which prices are calculated, defaults to USD
   param {string|number} params.currencyId - Filter markets with specific currency as either base or quote.
     Specifying a currencyId will also alter how prices are shown:
@@ -143,7 +145,9 @@ defmodule Coinranking do
   end
 
   @doc """
+  List all exchanges - paginated by 50
   ```
+  %{param: "value"}
   param {string|number} params.refCurrencyId [default: 1509] - Id of currency in which prices are calculated, defaults to USD
   param {string|number} params.limit [default: 50] - Limit. Used for pagination. Range: 0-100
   param {string|number} params.offset [default: 0] - Offset. Used for pagination
