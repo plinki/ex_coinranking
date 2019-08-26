@@ -45,6 +45,14 @@ defmodule Coinranking do
         end).()
   end
 
+  @spec base_url(atom) :: String.t()
+  defp base_url(config) do
+    base = Application.get_env(config, :base)
+    ver = Application.get_env(config, :ver)
+
+    "#{base}v#{ver}/public/"
+  end
+
   def coins(query_params \\ %{}) do
     get!("coins", query_params)
   end
@@ -67,13 +75,5 @@ defmodule Coinranking do
 
   def exchanges(query_params \\ %{}) do
     get!("exchanges", query_params)
-  end
-
-  @spec base_url(atom) :: String.t()
-  defp base_url(config) do
-    base = Application.get_env(config, :base)
-    ver = Application.get_env(config, :ver)
-
-    "#{base}v#{ver}/public/"
   end
 end
