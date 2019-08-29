@@ -45,7 +45,7 @@ defmodule ExCoinranking.MixProject do
 
   defp package do
     [
-      files: ["lib", ".formatter.exs", "mix.exs", "README*", "LICENSE*"],
+      files: ["lib", ".formatter.exs", "mix.exs", "config", "README*", "LICENSE*"],
       licenses: ["GPL 3.0"],
       links: %{
         "GitHub" => "https://github.com/SplendidX/ex_coinranking"
